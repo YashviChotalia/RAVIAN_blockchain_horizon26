@@ -90,8 +90,9 @@ function App() {
       {/* Main Layout */}
       <div className="flex-1 flex max-w-7xl mx-auto w-full overflow-hidden">
         {/* Sidebar Nav */}
-        <nav className="w-56 border-r border-border bg-panel/30 p-3 hidden lg:block overflow-y-auto">
-          <div className="space-y-0.5">
+        <nav className="w-60 border-r border-border bg-[#0a0a0f]/50 p-4 hidden lg:flex flex-col overflow-y-auto custom-scrollbar">
+          <div className="space-y-1 flex-1">
+            <h3 className="text-[10px] font-bold text-textMuted/40 uppercase px-3 mb-2 tracking-[0.2em]">Platform Modules</h3>
             {tabs.map(tab => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -99,29 +100,32 @@ function App() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`w-full flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-xs transition-all duration-200 ${isActive
-                    ? 'bg-primary/10 text-primary font-medium border border-primary/20 shadow-[inset_0px_0px_8px_rgba(59,130,246,0.1)]'
-                    : 'text-textMuted hover:bg-panel hover:text-textMain'
+                  className={`w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-[13.5px] transition-all duration-300 group ${isActive
+                    ? 'bg-primary/15 text-primary font-semibold border border-primary/20 shadow-[0_0_15px_rgba(59,130,246,0.1)]'
+                    : 'text-textMuted hover:bg-white/5 hover:text-white'
                     }`}
                 >
-                  <Icon size={16} className={isActive ? 'text-primary' : ''} />
-                  {tab.label}
+                  <Icon size={20} className={`${isActive ? 'text-primary' : 'text-textMuted/60 group-hover:text-white'} transition-colors`} />
+                  <span className="tracking-wide">{tab.label}</span>
                 </button>
               );
             })}
           </div>
 
-          <div className="mt-6 p-3 bg-panel/50 rounded-lg border border-border">
-            <h3 className="text-[10px] font-bold text-textMuted uppercase mb-2 tracking-widest">Core Tech</h3>
-            <div className="flex flex-wrap gap-1.5">
-              {['Hyperledger', 'Smart Contracts', 'Polygon'].map(tech => (
-                <span key={tech} className="px-1.5 py-0.5 text-[9px] bg-background border border-border rounded text-textMuted/70">
+          <div className="mt-8 p-4 bg-primary/5 rounded-2xl border border-primary/10 backdrop-blur-sm">
+            <h3 className="text-[10px] font-bold text-primary/70 uppercase mb-3 tracking-[0.2em] flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              Tech Stack
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {['Hyperledger', 'Solidity', 'Polygon', 'React'].map(tech => (
+                <span key={tech} className="px-2 py-1 text-[10px] font-mono bg-background border border-border/50 rounded-md text-textMuted/80">
                   {tech}
                 </span>
               ))}
             </div>
           </div>
-          <div className="h-20" /> {/* Spacer for scrolling */}
+          <div className="h-10 shrink-0" />
         </nav>
 
         {/* Mobile Nav Header */}
