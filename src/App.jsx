@@ -68,7 +68,7 @@ function App() {
     <div className="min-h-screen bg-background text-textMain flex flex-col font-sans">
       {/* Header */}
       <header className="border-b border-border bg-panel/50 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+        <div className="w-full px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-primary/20 border border-primary/50 flex items-center justify-center glow text-primary">
               <Shield size={24} />
@@ -88,7 +88,7 @@ function App() {
       </header>
 
       {/* Main Layout */}
-      <div className="flex-1 flex max-w-7xl mx-auto w-full overflow-hidden">
+      <div className="flex-1 flex w-full overflow-hidden">
         {/* Sidebar Nav */}
         <nav className="w-60 border-r border-border bg-[#0a0a0f]/50 p-4 hidden lg:flex flex-col overflow-y-auto custom-scrollbar">
           <div className="space-y-1 flex-1">
@@ -143,13 +143,13 @@ function App() {
         </div>
 
         {/* Content Area */}
-        <main className="flex-1 p-4 md:p-8 overflow-y-auto">
+        <main className="flex-1 p-6 md:p-10 overflow-y-auto">
           <motion.div
             key={activeTab}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="h-full max-w-6xl mx-auto"
+            className="h-full w-full"
           >
             {renderContent()}
           </motion.div>
