@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Activity, Server } from 'lucide-react';
+import { Activity, Server, RefreshCcw } from 'lucide-react';
 
 const NetworkVisualizer = () => {
     const [blocks, setBlocks] = useState([]);
