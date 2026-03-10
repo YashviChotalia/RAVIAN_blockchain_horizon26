@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Activity, Shield, Coins, Share2, Layers, Clock, Settings, ArrowRight, X, AlertTriangle, Repeat, PieChart, Eye, Fingerprint } from 'lucide-react';
+import { Activity, Shield, Coins, Share2, Layers, Clock, Settings, ArrowRight, X, AlertTriangle, Repeat, PieChart, Eye, Fingerprint, Link, RefreshCcw, Globe, BarChart3 } from 'lucide-react';
 
 // Simulated sections
 import ProblemVisualization from './components/ProblemVisualization';
@@ -15,6 +15,10 @@ import SmartMarginSystem from './components/SmartMarginSystem';
 import RiskFailureScenarios from './components/RiskFailureScenarios';
 import RegulatorDashboard from './components/RegulatorDashboard';
 import VerifiedIdentityLayer from './components/VerifiedIdentityLayer';
+import SettlementGridlock from './components/SettlementGridlock';
+import InstitutionalRiskDashboard from './components/InstitutionalRiskDashboard';
+import ClearingEvolution from './components/ClearingEvolution';
+import MacroImpactDashboard from './components/MacroImpactDashboard';
 
 function App() {
   const [activeTab, setActiveTab] = useState('problem');
@@ -22,14 +26,18 @@ function App() {
   const tabs = [
     { id: 'problem', label: 'T+1 Problem', icon: Clock },
     { id: 'identity', label: 'Identity Layer', icon: Fingerprint },
+    { id: 'gridlock', label: 'Gridlock Sim', icon: Link },
     { id: 'architecture', label: 'Blockchain DVP', icon: Layers },
+    { id: 'clearing', label: 'Clearing Shift', icon: RefreshCcw },
     { id: 'simulator', label: 'Atomic Swap', icon: Activity },
     { id: 'network', label: 'Network', icon: Share2 },
     { id: 'comparison', label: 'Time & Cost', icon: Coins },
     { id: 'efficiency', label: 'Capital Unlock', icon: Activity },
+    { id: 'macro', label: 'Macro Impact', icon: Globe },
     { id: 'liquidity', label: 'Liquidity Reuse', icon: Repeat },
     { id: 'margin', label: 'Smart Margin', icon: PieChart },
     { id: 'risk', label: 'Risk Scenarios', icon: AlertTriangle },
+    { id: 'inst_risk', label: 'Inst. Risk', icon: BarChart3 },
     { id: 'regulator', label: 'SEBI Dashboard', icon: Eye },
     { id: 'compliance', label: 'Compliance', icon: Shield },
   ];
@@ -38,14 +46,18 @@ function App() {
     switch (activeTab) {
       case 'problem': return <ProblemVisualization />;
       case 'identity': return <VerifiedIdentityLayer />;
+      case 'gridlock': return <SettlementGridlock />;
       case 'architecture': return <BlockchainArchitecture />;
+      case 'clearing': return <ClearingEvolution />;
       case 'simulator': return <AtomicSimulator />;
       case 'network': return <NetworkVisualizer />;
       case 'comparison': return <SettlementComparison />;
       case 'efficiency': return <CapitalEfficiency />;
+      case 'macro': return <MacroImpactDashboard />;
       case 'liquidity': return <LiquidityReuseSimulator />;
       case 'margin': return <SmartMarginSystem />;
       case 'risk': return <RiskFailureScenarios />;
+      case 'inst_risk': return <InstitutionalRiskDashboard />;
       case 'regulator': return <RegulatorDashboard />;
       case 'compliance': return <ComplianceLayer />;
       default: return <ProblemVisualization />;
