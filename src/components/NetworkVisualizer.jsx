@@ -17,7 +17,7 @@ const NetworkVisualizer = () => {
 
     const nodes = [
         { title: 'NSE Node', x: 50, y: 15 },
-        { title: 'BSE Node', x: 80, y: 35 },
+        { title: 'BSE Node', x: 70, y: 35 },
         { title: 'RBI Node', x: 75, y: 75 },
         { title: 'SEBI Audit', x: 50, y: 85 },
         { title: 'NSDL Node', x: 25, y: 75 },
@@ -103,7 +103,7 @@ const NetworkVisualizer = () => {
                 ))}
 
                 {/* Block History */}
-                <div className="absolute top-8 right-8 w-64 bg-panel/30 backdrop-blur-xl border border-border/50 rounded-2xl p-5 z-30 shadow-2xl">
+                <div className="absolute bottom-8 right-8 w-64 bg-panel/30 backdrop-blur-xl border border-border/50 rounded-2xl p-5 z-30 shadow-2xl">
                     <div className="flex items-center justify-between mb-4 pb-2 border-b border-border/30">
                         <h4 className="text-[10px] font-bold text-textMuted uppercase tracking-widest flex items-center gap-2">
                             <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" /> Live Ledger Sync

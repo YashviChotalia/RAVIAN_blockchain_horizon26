@@ -2,18 +2,32 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Layers, Zap, Cpu, Activity, Server, Users, Landmark, Coins, Database, RefreshCw, Fingerprint } from 'lucide-react';
 
-const NodeInfo = ({ title, desc }) => (
-    <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        className="absolute -top-24 left-1/2 -translate-x-1/2 w-64 p-3 bg-panel border gap-2 border-primary/50 rounded-lg shadow-xl z-50 pointer-events-none"
-    >
-        <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-panel border-b border-r border-primary/50 rotate-45"></div>
-        <h4 className="text-white font-bold text-sm mb-1">{title}</h4>
-        <p className="text-xs text-textMuted leading-tight">{desc}</p>
-    </motion.div>
-);
+const NodeInfo = ({ title, desc, position = "top" }) => {
+    const posClasses = {
+        top: "absolute -top-24 left-1/2 -translate-x-1/2",
+        right: "absolute top-1/2 left-full translate-x-4 -translate-y-1/2",
+        left: "absolute top-1/2 right-full -translate-x-4 -translate-y-1/2",
+    };
+
+    const arrowClasses = {
+        top: "absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-panel border-b border-r border-primary/50 rotate-45",
+        right: "absolute top-1/2 -left-2 -translate-y-1/2 w-4 h-4 bg-panel border-l border-b border-primary/50 rotate-45",
+        left: "absolute top-1/2 -right-2 -translate-y-1/2 w-4 h-4 bg-panel border-t border-r border-primary/50 rotate-45",
+    };
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className={`${posClasses[position]} w-64 p-3 bg-panel border border-primary/50 rounded-lg shadow-2xl z-50 pointer-events-none`}
+        >
+            <div className={arrowClasses[position]}></div>
+            <h4 className="text-white font-bold text-sm mb-1">{title}</h4>
+            <p className="text-xs text-textMuted leading-tight">{desc}</p>
+        </motion.div>
+    );
+};
 
 const BlockchainArchitecture = () => {
     const [hoveredNode, setHoveredNode] = useState(null);
@@ -54,7 +68,7 @@ const BlockchainArchitecture = () => {
 
                     {/* Level 1: Users */}
                     <div className="flex justify-center mb-8 relative">
-                        <Node hoverId="traders" node={nodes[0]} onHover={handleHover} onLeave={handleLeave} hovered={hoveredNode} />
+                        <Node hoverId="traders" node={nodes[0]} onHover={handleHover} onLeave={handleLeave} hovered={hoveredNode} tooltipPos="right" />
                         <div className="absolute h-8 w-px bg-border -bottom-8 left-1/2" />
                     </div>
 
@@ -95,7 +109,7 @@ const BlockchainArchitecture = () => {
                                 <span className="font-bold text-white text-lg">Blockchain Settlement Layer</span>
                             </div>
                             <AnimatePresence>
-                                {hoveredNode === 'blockchain' && <NodeInfo title={nodes[4].title} desc={nodes[4].desc} />}
+                                {hoveredNode === 'blockchain' && <NodeInfo title={nodes[4].title} desc={nodes[4].desc} position="right" />}
                             </AnimatePresence>
                         </motion.div>
                     </div>
@@ -144,7 +158,7 @@ const BlockchainArchitecture = () => {
     );
 };
 
-const Node = ({ node, hoverId, onHover, onLeave, hovered, color = "text-textMain", border = "border-border" }) => {
+const Node = ({ node, hoverId, onHover, onLeave, hovered, color = "text-textMain", border = "border-border", tooltipPos = "top" }) => {
     const Icon = node.icon;
     return (
         <div
@@ -158,7 +172,7 @@ const Node = ({ node, hoverId, onHover, onLeave, hovered, color = "text-textMain
             <span className="mt-3 font-medium text-sm text-textMain">{node.title}</span>
 
             <AnimatePresence>
-                {hovered === hoverId && <NodeInfo title={node.title} desc={node.desc} />}
+                {hovered === hoverId && <NodeInfo title={node.title} desc={node.desc} position={tooltipPos} />}
             </AnimatePresence>
         </div>
     );
