@@ -131,7 +131,7 @@ const RiskFailureScenarios = () => {
                         className="bg-panel border border-border rounded-xl p-6"
                     >
                         <div className="flex items-center gap-3 border-b border-border pb-4 mb-4">
-                            {activeScenario.icon({ size: 24, className: `text-${activeScenario.color}` })}
+                            <activeScenario.icon size={24} className={activeScenario.color === 'danger' ? 'text-danger' : `text-${activeScenario.color}`} />
                             <h3 className="text-xl font-bold text-white shrink-0">{activeScenario.title}</h3>
                             <p className="text-sm text-textMuted italic ml-4">{activeScenario.desc}</p>
                         </div>

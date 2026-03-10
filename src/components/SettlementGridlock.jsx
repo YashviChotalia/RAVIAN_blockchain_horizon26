@@ -51,72 +51,83 @@ const SettlementGridlock = () => {
                 </div>
             </div>
 
-            <div className="bg-panel border border-border p-6 rounded-xl flex flex-col md:flex-row gap-8 items-center justify-center min-h-[400px] relative overflow-hidden">
+            <div className="bg-panel border border-border p-6 rounded-2xl flex flex-col lg:flex-row gap-12 items-center justify-center min-h-[500px] relative overflow-hidden">
 
                 {/* Visualizer Area */}
-                <div className="flex-1 w-full max-w-lg relative h-64 flex items-center justify-center">
+                <div className="flex-1 w-full max-w-2xl relative h-80 flex items-center justify-center">
 
                     {/* Trader A */}
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 flex flex-col items-center">
-                        <div className={`w-16 h-16 rounded-full flex items-center justify-center border-4 z-10 bg-background
-                           ${mode === 't1' && step >= 1 ? 'border-danger glow-danger' :
-                                mode === 'rt' && step >= 1 ? 'border-success glow-success' : 'border-border'}
+                    <div className="absolute top-2 left-1/2 -translate-x-1/2 flex flex-col items-center z-20">
+                        <div className={`w-20 h-20 rounded-full flex flex-col items-center justify-center border-2 transition-all duration-500 bg-background/80 backdrop-blur-sm
+                           ${mode === 't1' && step >= 1 ? 'border-danger glow-danger shadow-[0_0_20px_rgba(239,68,68,0.3)]' :
+                                mode === 'rt' && step >= 1 ? 'border-success glow-success shadow-[0_0_20px_rgba(16,185,129,0.3)]' : 'border-border'}
                        `}>
-                            <span className="font-bold font-mono">Trader A</span>
+                            <span className="font-bold text-[10px] text-textMuted uppercase tracking-tighter">Trader</span>
+                            <span className="text-xl font-bold font-mono">A</span>
                         </div>
-                        <span className="text-xs text-textMuted mt-2 text-center w-32">Has: TCS Shares<br />Needs: Cash</span>
+                        <div className="mt-3 px-3 py-1 bg-panel/50 border border-border rounded-lg text-center shadow-lg">
+                            <span className="text-[10px] font-bold text-white uppercase block">Has: TCS Shares</span>
+                            <span className="text-[9px] text-primary uppercase font-mono tracking-tighter">Needs: Cash</span>
+                        </div>
                     </div>
 
                     {/* Trader B */}
-                    <div className="absolute bottom-0 left-0 flex flex-col items-center">
-                        <span className="text-xs text-textMuted mb-2 text-center w-32">Has: Cash<br />Needs: RELIANCE</span>
-                        <div className={`w-16 h-16 rounded-full flex items-center justify-center border-4 z-10 bg-background
-                           ${mode === 't1' && step >= 2 ? 'border-danger glow-danger' :
-                                mode === 'rt' && step >= 2 ? 'border-success glow-success' : 'border-border'}
+                    <div className="absolute bottom-4 left-4 flex flex-col items-center z-20">
+                        <div className="mb-3 px-3 py-1 bg-panel/50 border border-border rounded-lg text-center shadow-lg">
+                            <span className="text-[10px] font-bold text-white uppercase block">Has: Cash</span>
+                            <span className="text-[9px] text-primary uppercase font-mono tracking-tighter">Needs: RELIANCE</span>
+                        </div>
+                        <div className={`w-20 h-20 rounded-full flex flex-col items-center justify-center border-2 transition-all duration-500 bg-background/80 backdrop-blur-sm
+                           ${mode === 't1' && step >= 2 ? 'border-danger glow-danger shadow-[0_0_20px_rgba(239,68,68,0.3)]' :
+                                mode === 'rt' && step >= 2 ? 'border-success glow-success shadow-[0_0_20px_rgba(16,185,129,0.3)]' : 'border-border'}
                        `}>
-                            <span className="font-bold font-mono">Trader B</span>
+                            <span className="font-bold text-[10px] text-textMuted uppercase tracking-tighter">Trader</span>
+                            <span className="text-xl font-bold font-mono">B</span>
                         </div>
                     </div>
 
                     {/* Trader C */}
-                    <div className="absolute bottom-0 right-0 flex flex-col items-center">
-                        <span className="text-xs text-textMuted mb-2 text-center w-32">Has: RELIANCE<br />Needs: TCS Shares</span>
-                        <div className={`w-16 h-16 rounded-full flex items-center justify-center border-4 z-10 bg-background
-                           ${mode === 't1' && step >= 3 ? 'border-danger glow-danger' :
-                                mode === 'rt' && step >= 3 ? 'border-success glow-success' : 'border-border'}
+                    <div className="absolute bottom-4 right-4 flex flex-col items-center z-20">
+                        <div className="mb-3 px-3 py-1 bg-panel/50 border border-border rounded-lg text-center shadow-lg">
+                            <span className="text-[10px] font-bold text-white uppercase block">Has: RELIANCE</span>
+                            <span className="text-[9px] text-primary uppercase font-mono tracking-tighter">Needs: TCS Shares</span>
+                        </div>
+                        <div className={`w-20 h-20 rounded-full flex flex-col items-center justify-center border-2 transition-all duration-500 bg-background/80 backdrop-blur-sm
+                           ${mode === 't1' && step >= 3 ? 'border-danger glow-danger shadow-[0_0_20px_rgba(239,68,68,0.3)]' :
+                                mode === 'rt' && step >= 3 ? 'border-success glow-success shadow-[0_0_20px_rgba(16,185,129,0.3)]' : 'border-border'}
                        `}>
-                            <span className="font-bold font-mono">Trader C</span>
+                            <span className="font-bold text-[10px] text-textMuted uppercase tracking-tighter">Trader</span>
+                            <span className="text-xl font-bold font-mono">C</span>
                         </div>
                     </div>
 
                     {/* Connections */}
-                    {/* A to B */}
-                    <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }}>
+                    <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 10 }}>
                         <defs>
-                            <marker id="arrowT1" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                                <path d="M 0 0 L 10 5 L 0 10 z" fill="#ef4444" opacity="0.5" />
+                            <marker id="arrowT1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                                <path d="M 0 0 L 10 5 L 0 10 z" fill="#ef4444" />
                             </marker>
-                            <marker id="arrowRT" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                                <path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981" opacity="0.8" />
+                            <marker id="arrowRT" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                                <path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981" />
                             </marker>
                         </defs>
 
                         {step >= 1 && (
-                            <motion.line initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} x1="50%" y1="20%" x2="20%" y2="70%"
-                                stroke={mode === 't1' ? '#ef4444' : '#10b981'} strokeWidth="2" strokeDasharray={mode === 't1' ? "5,5" : "0"}
-                                opacity={0.5} markerEnd={`url(#arrow${mode === 't1' ? 'T1' : 'RT'})`}
+                            <motion.line initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} x1="45%" y1="25%" x2="15%" y2="65%"
+                                stroke={mode === 't1' ? '#ef4444' : '#10b981'} strokeWidth="2.5" strokeDasharray={mode === 't1' ? "6,4" : "0"}
+                                markerEnd={`url(#arrow${mode === 't1' ? 'T1' : 'RT'})`}
                             />
                         )}
                         {step >= 2 && (
-                            <motion.line initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} x1="20%" y1="80%" x2="80%" y2="80%"
-                                stroke={mode === 't1' ? '#ef4444' : '#10b981'} strokeWidth="2" strokeDasharray={mode === 't1' ? "5,5" : "0"}
-                                opacity={0.5} markerEnd={`url(#arrow${mode === 't1' ? 'T1' : 'RT'})`}
+                            <motion.line initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} x1="25%" y1="75%" x2="75%" y2="75%"
+                                stroke={mode === 't1' ? '#ef4444' : '#10b981'} strokeWidth="2.5" strokeDasharray={mode === 't1' ? "6,4" : "0"}
+                                markerEnd={`url(#arrow${mode === 't1' ? 'T1' : 'RT'})`}
                             />
                         )}
                         {step >= 3 && (
-                            <motion.line initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} x1="80%" y1="70%" x2="50%" y2="20%"
-                                stroke={mode === 't1' ? '#ef4444' : '#10b981'} strokeWidth="2" strokeDasharray={mode === 't1' ? "5,5" : "0"}
-                                opacity={0.5} markerEnd={`url(#arrow${mode === 't1' ? 'T1' : 'RT'})`}
+                            <motion.line initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} x1="85%" y1="65%" x2="55%" y2="25%"
+                                stroke={mode === 't1' ? '#ef4444' : '#10b981'} strokeWidth="2.5" strokeDasharray={mode === 't1' ? "6,4" : "0"}
+                                markerEnd={`url(#arrow${mode === 't1' ? 'T1' : 'RT'})`}
                             />
                         )}
                     </svg>
@@ -124,13 +135,13 @@ const SettlementGridlock = () => {
                     {/* Central Icon */}
                     <AnimatePresence>
                         {step >= 4 && mode === 't1' && (
-                            <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-danger bg-danger/10 p-4 rounded-full glow-danger z-20">
-                                <AlertTriangle size={36} />
+                            <motion.div initial={{ scale: 0, rotate: -45 }} animate={{ scale: 1, rotate: 0 }} className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-danger bg-danger/10 p-6 rounded-full glow-danger z-30 border border-danger/50 shadow-2xl">
+                                <AlertTriangle size={48} className="animate-bounce" />
                             </motion.div>
                         )}
                         {step >= 4 && mode === 'rt' && (
-                            <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-success bg-success/10 p-4 rounded-full glow-success z-20 shadow-[0_0_30px_rgba(16,185,129,0.5)]">
-                                <InfinityIcon size={36} />
+                            <motion.div initial={{ scale: 0, rotate: 45 }} animate={{ scale: 1, rotate: 0 }} className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-success bg-success/10 p-6 rounded-full glow-success z-30 border border-success/50 shadow-[0_0_50px_rgba(16,185,129,0.6)]">
+                                <InfinityIcon size={48} className="animate-pulse" />
                             </motion.div>
                         )}
                     </AnimatePresence>
