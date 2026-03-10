@@ -33,15 +33,31 @@ const NetworkVisualizer = () => {
                 <p className="text-textMuted mt-1">Simulating real-time block propagation across permissioned nodes.</p>
             </div>
 
-            <div className="bg-[#0f1115] border border-border rounded-xl p-8 h-[600px] relative overflow-hidden flex justify-center items-center shadow-[inset_0_0_100px_rgba(0,0,0,0.8)]">
+            <div className={`bg-[#0f1115] border border-border rounded-xl p-8 h-[600px] relative overflow-hidden flex justify-center items-center shadow-[inset_0_0_100px_rgba(0,0,0,0.8)]`}>
+                {/* Background Grid */}
+                <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#3b82f6 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
 
                 {/* Connection Lines setup */}
-                <svg className="absolute inset-0 w-full h-full stroke-border stroke-[1]" style={{ zIndex: 0 }}>
-                    <circle cx="50%" cy="50%" r="35%" fill="none" />
+                <svg className="absolute inset-0 w-full h-full stroke-primary/10 stroke-[1.5]" style={{ zIndex: 0 }}>
                     {nodes.map((node, i) => (
                         nodes.map((target, j) => {
-                            if (i !== j) {
-                                return <line key={`${i}-${j}`} x1={node.x} y1={node.y} x2={target.x} y2={target.y} className="stroke-border/20" />
+                            if (i < j) {
+                                return (
+                                    <g key={`${i}-${j}`}>
+                                        <line x1={node.x} y1={node.y} x2={target.x} y2={target.y} />
+                                        <motion.circle
+                                            r="2"
+                                            fill="#3b82f6"
+                                            initial={{ offsetDistance: "0%" }}
+                                            animate={{ offsetDistance: "100%" }}
+                                            transition={{ duration: 3, repeat: Infinity, ease: "linear", delay: (i + j) * 0.5 }}
+                                            style={{
+                                                offsetPath: `path('M ${node.x} ${node.y} L ${target.x} ${target.y}')`,
+                                                filter: 'drop-shadow(0 0 4px #3b82f6)'
+                                            }}
+                                        />
+                                    </g>
+                                )
                             }
                             return null;
                         })
@@ -49,60 +65,60 @@ const NetworkVisualizer = () => {
                 </svg>
 
                 {/* Central Ledger */}
-                <div className="relative z-10 w-48 h-48 bg-panel border-4 border-primary/30 rounded-full flex flex-col items-center justify-center glow text-center">
-                    <Server size={32} className="text-primary mb-2" />
-                    <span className="font-bold text-lg">Hyperledger Fabric</span>
-                    <span className="text-xs text-textMuted">Shared Global State</span>
+                <div className="relative z-10 w-44 h-44 bg-panel/80 backdrop-blur-md border-2 border-primary/40 rounded-full flex flex-col items-center justify-center glow transition-all hover:scale-105 group cursor-default">
+                    <Server size={32} className="text-primary mb-2 group-hover:scale-110 transition-transform" />
+                    <span className="font-bold text-sm tracking-widest uppercase text-white">Consensus Layer</span>
+                    <span className="text-[10px] text-primary/70 font-mono mt-1 tracking-tighter">GLOBAL_STATE_v4.2</span>
                 </div>
 
                 {/* Nodes */}
                 {nodes.map((node, index) => (
                     <div
                         key={index}
-                        className="absolute z-20"
+                        className="absolute z-20 group"
                         style={{ left: node.x, top: node.y, transform: 'translate(-50%, -50%)' }}
                     >
-                        <div className="w-16 h-16 bg-background border-2 border-primary rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(59,130,246,0.5)]">
-                            <Server size={24} className="text-primary" />
-                        </div>
-                        <div className="absolute -bottom-6 whitespace-nowrap left-1/2 -translate-x-1/2 font-bold text-xs bg-panel border border-border px-2 py-1 rounded">
+                        <motion.div
+                            whileHover={{ scale: 1.1 }}
+                            className="w-14 h-14 bg-background border border-primary/50 group-hover:border-primary rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(59,130,246,0.1)] group-hover:glow transition-all active:scale-95 cursor-pointer"
+                        >
+                            <Server size={20} className="text-primary/70 group-hover:text-primary transition-colors" />
+                        </motion.div>
+                        <div className="absolute -bottom-8 whitespace-nowrap left-1/2 -translate-x-1/2 font-bold text-[10px] uppercase tracking-widest bg-panel/90 border border-border px-2.5 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                             {node.title}
                         </div>
-
-                        {/* Simulated Data Packets */}
-                        {blocks.map((block) => (
-                            <motion.div
-                                key={`${block.id}-${index}`}
-                                initial={{ scale: 0, opacity: 1, x: '-50%', y: '-50%' }}
-                                animate={{
-                                    scale: [1, 2, 0],
-                                    opacity: [1, 1, 0]
-                                }}
-                                transition={{ duration: 1.5, ease: "easeOut" }}
-                                className="absolute top-1/2 left-1/2 w-8 h-8 rounded-full border border-primary/50 pointer-events-none"
-                            />
-                        ))}
                     </div>
                 ))}
 
                 {/* Block History */}
-                <div className="absolute top-4 right-4 w-64 bg-panel/80 border border-border rounded-lg p-4 backdrop-blur-md z-30">
-                    <h4 className="text-xs font-bold text-textMuted uppercase mb-3 border-b border-border pb-2">Recent Blocks</h4>
-                    <div className="space-y-2 max-h-48 overflow-y-auto pr-2">
+                <div className="absolute top-6 right-6 w-60 bg-panel/40 backdrop-blur-xl border border-border/50 rounded-xl p-4 z-30 shadow-2xl">
+                    <h4 className="text-[10px] font-bold text-textMuted uppercase mb-3 tracking-widest flex items-center justify-between">
+                        <span>LATEST BLOCKS</span>
+                        <div className="flex gap-1">
+                            <span className="w-1 h-1 rounded-full bg-success"></span>
+                            <span className="w-1 h-1 rounded-full bg-success/50"></span>
+                        </div>
+                    </h4>
+                    <div className="space-y-2 max-h-56 overflow-y-auto pr-2 custom-scrollbar">
                         {blocks.slice().reverse().map(b => (
                             <motion.div
                                 key={b.id}
                                 initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
-                                className="flex items-center justify-between text-xs bg-background p-2 rounded border border-border"
+                                className="flex items-center justify-between text-[10px] bg-background/50 border border-border/40 p-2.5 rounded-lg hover:border-primary/40 transition-colors"
                             >
                                 <span className="font-mono text-primary flex items-center gap-2">
-                                    <span className="w-2 h-2 rounded-full bg-success"></span>
-                                    #{b.id.toString().slice(-6)}
+                                    <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse"></span>
+                                    0x{b.id.toString(16).slice(-6).toUpperCase()}
                                 </span>
-                                <span className="text-textMuted">{b.txCount} txs</span>
+                                <span className="text-textMuted font-mono">{b.txCount} TXS</span>
                             </motion.div>
                         ))}
-                        {blocks.length === 0 && <span className="text-xs text-textMuted italic">Awaiting blocks...</span>}
+                        {blocks.length === 0 && (
+                            <div className="flex flex-col items-center py-4 opacity-50">
+                                <RefreshCcw className="animate-spin mb-2" size={16} />
+                                <span className="text-[10px] text-textMuted italic">SYNCING NODE...</span>
+                            </div>
+                        )}
                     </div>
                 </div>
 

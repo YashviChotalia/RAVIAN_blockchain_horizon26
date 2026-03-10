@@ -88,10 +88,10 @@ function App() {
       </header>
 
       {/* Main Layout */}
-      <div className="flex-1 flex max-w-7xl mx-auto w-full">
+      <div className="flex-1 flex max-w-7xl mx-auto w-full overflow-hidden">
         {/* Sidebar Nav */}
-        <nav className="w-64 border-r border-border bg-panel/30 p-4 hidden md:block">
-          <div className="space-y-1">
+        <nav className="w-56 border-r border-border bg-panel/30 p-3 hidden lg:block overflow-y-auto">
+          <div className="space-y-0.5">
             {tabs.map(tab => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -99,28 +99,29 @@ function App() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg text-sm transition-all duration-200 ${isActive
-                    ? 'bg-primary/10 text-primary font-medium border border-primary/20 shadow-[inset_0px_0px_10px_rgba(59,130,246,0.1)]'
+                  className={`w-full flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-xs transition-all duration-200 ${isActive
+                    ? 'bg-primary/10 text-primary font-medium border border-primary/20 shadow-[inset_0px_0px_8px_rgba(59,130,246,0.1)]'
                     : 'text-textMuted hover:bg-panel hover:text-textMain'
                     }`}
                 >
-                  <Icon size={18} className={isActive ? 'text-primary' : ''} />
+                  <Icon size={16} className={isActive ? 'text-primary' : ''} />
                   {tab.label}
                 </button>
               );
             })}
           </div>
 
-          <div className="mt-8 p-4 bg-panel/50 rounded-lg border border-border">
-            <h3 className="text-xs font-semibold text-textMuted uppercase mb-3">Tech Stack</h3>
-            <div className="flex flex-wrap gap-2">
-              {['Hyperledger', 'React', 'Smart Contracts', 'Polygon CDK', 'NodeJS'].map(tech => (
-                <span key={tech} className="px-2 py-1 text-[10px] bg-background border border-border rounded text-textMuted">
+          <div className="mt-6 p-3 bg-panel/50 rounded-lg border border-border">
+            <h3 className="text-[10px] font-bold text-textMuted uppercase mb-2 tracking-widest">Core Tech</h3>
+            <div className="flex flex-wrap gap-1.5">
+              {['Hyperledger', 'Smart Contracts', 'Polygon'].map(tech => (
+                <span key={tech} className="px-1.5 py-0.5 text-[9px] bg-background border border-border rounded text-textMuted/70">
                   {tech}
                 </span>
               ))}
             </div>
           </div>
+          <div className="h-20" /> {/* Spacer for scrolling */}
         </nav>
 
         {/* Mobile Nav Header */}
@@ -144,7 +145,7 @@ function App() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="h-full"
+            className="h-full max-w-6xl mx-auto"
           >
             {renderContent()}
           </motion.div>

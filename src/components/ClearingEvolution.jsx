@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Settings, ShieldCheck, Database, Server, RefreshCcw, Landmark, Zap, Lock, CreditCard } from 'lucide-react';
+import { Settings, ShieldCheck, Database, Server, RefreshCcw, Landmark, Zap, Lock, CreditCard, CheckCircle2 } from 'lucide-react';
 
 const ClearingEvolution = () => {
     const [view, setView] = useState('traditional'); // traditional, transitional, atomic

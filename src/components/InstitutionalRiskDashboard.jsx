@@ -46,8 +46,8 @@ const InstitutionalRiskDashboard = () => {
 
                 {/* Outstanding Settlement Exposure */}
                 <div className="bg-panel border border-danger/30 p-6 rounded-xl flex flex-col justify-between group overflow-hidden relative">
-                    <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none group-hover:scale-110 transition-transform">
-                        <ShieldAlert size={100} />
+                    <div className="absolute -top-4 -right-4 p-4 opacity-5 pointer-events-none group-hover:scale-110 transition-transform group-hover:opacity-10">
+                        <ShieldAlert size={120} />
                     </div>
                     <h3 className="text-xs font-bold text-textMuted uppercase mb-4 flex items-center gap-2">
                         <ShieldAlert size={16} className="text-danger" /> Outstanding Settlement Exposure

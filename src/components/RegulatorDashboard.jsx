@@ -141,6 +141,15 @@ const RegulatorDashboard = () => {
                         ))}
                     </AnimatePresence>
 
+                    {isLive && logs.length === 0 && (
+                        <div className="absolute inset-0 flex flex-col items-center justify-center space-y-3">
+                            <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: "linear" }} className="text-teal-400">
+                                <RefreshCcw size={24} />
+                            </motion.div>
+                            <p className="text-textMuted tracking-widest font-mono text-[10px] animate-pulse">CONNECTING TO LEDGER PROTOCOL...</p>
+                        </div>
+                    )}
+
                     {!isLive && logs.length === 0 && (
                         <div className="absolute inset-0 flex items-center justify-center text-textMuted tracking-wider font-mono text-sm opacity-50">
                             STREAM INTERRUPTED

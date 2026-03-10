@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { AlertTriangle, Clock, Activity, Coins, Lock, TrendingDown } from 'lucide-react';
+import { AlertTriangle, Clock, Activity, Coins, Lock, TrendingDown, Layers, Globe, Database, CheckCircle2 } from 'lucide-react';
 
 const ProblemVisualization = () => {
     const containerVars = {
@@ -22,7 +22,7 @@ const ProblemVisualization = () => {
         { title: 'Exchange', desc: 'Matching', icon: <Globe className="text-blue-400 w-6 h-6" /> },
         { title: 'Clearing Corp', desc: 'Lockup (T+1)', icon: <Lock className="text-danger w-6 h-6" /> },
         { title: 'Depository', desc: 'Transfer', icon: <Database className="text-orange-400 w-6 h-6" /> },
-        { title: 'Settlement', desc: 'Next Day', icon: <CheckCircle className="text-success w-6 h-6" /> }
+        { title: 'Settlement', desc: 'Next Day', icon: <CheckCircle2 className="text-success w-6 h-6" /> }
     ];
 
     return (
@@ -117,11 +117,5 @@ const ProblemVisualization = () => {
         </div>
     );
 };
-
-// Quick Icons
-const Layers = ({ className }) => <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>;
-const Globe = ({ className }) => <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>;
-const Database = ({ className }) => <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>;
-const CheckCircle = ({ className }) => <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
 
 export default ProblemVisualization;

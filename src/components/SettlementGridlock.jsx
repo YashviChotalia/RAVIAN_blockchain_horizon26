@@ -35,9 +35,19 @@ const SettlementGridlock = () => {
                     <p className="text-textMuted mt-1">Demonstrating how delayed settlement creates capital deadlocks.</p>
                 </div>
 
-                <div className="flex bg-panel border border-border rounded-lg p-1 text-sm font-medium">
-                    <button onClick={() => handleModeSwitch('t1')} className={`px-4 py-2 rounded-md transition-all ${mode === 't1' ? 'bg-danger/20 text-danger shadow-[0_0_10px_rgba(239,68,68,0.2)]' : 'text-textMuted hover:bg-background'}`}>Traditional T+1</button>
-                    <button onClick={() => handleModeSwitch('rt')} className={`px-4 py-2 rounded-md transition-all ${mode === 'rt' ? 'bg-success/20 text-success shadow-[0_0_10px_rgba(16,185,129,0.2)]' : 'text-textMuted hover:bg-background'}`}>Atomic Real-Time</button>
+                <div className="flex bg-[#0f1115] border border-border rounded-xl p-1.5 text-xs font-bold uppercase tracking-widest shadow-inner">
+                    <button
+                        onClick={() => handleModeSwitch('t1')}
+                        className={`flex items-center gap-2 px-6 py-2.5 rounded-lg transition-all ${mode === 't1' ? 'bg-danger/20 text-danger border border-danger/30 glow-danger' : 'text-textMuted hover:text-white'}`}
+                    >
+                        <AlertTriangle size={14} /> Legacy T+1
+                    </button>
+                    <button
+                        onClick={() => handleModeSwitch('rt')}
+                        className={`flex items-center gap-2 px-6 py-2.5 rounded-lg transition-all ${mode === 'rt' ? 'bg-success/20 text-success border border-success/30 glow-success' : 'text-textMuted hover:text-white'}`}
+                    >
+                        <InfinityIcon size={14} /> Atomic DVP
+                    </button>
                 </div>
             </div>
 

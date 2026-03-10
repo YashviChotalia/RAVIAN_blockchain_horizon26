@@ -34,8 +34,8 @@ const MacroImpactDashboard = () => {
             <div className="bg-panel border border-border p-6 rounded-xl flex flex-col md:flex-row gap-8 items-center justify-between">
 
                 <div className="w-full md:w-1/2 space-y-4">
-                    <label className="text-xs font-bold text-textMuted uppercase block">Daily Market Volume (₹ Crores)</label>
-                    <div className="flex items-center gap-4">
+                    <label className="text-xs font-bold text-textMuted uppercase block tracking-wider">Daily Market Volume (₹ Crores)</label>
+                    <div className="flex items-center gap-6">
                         <input
                             type="range"
                             min="50000"
@@ -43,16 +43,15 @@ const MacroImpactDashboard = () => {
                             step="10000"
                             value={volume}
                             onChange={(e) => setVolume(Number(e.target.value))}
-                            className="w-full relative h-2 bg-background rounded-full outline-none appearance-none"
+                            className="w-full h-1.5 bg-background border border-border rounded-full outline-none appearance-none cursor-pointer accent-primary"
                         />
-                        <span className="font-mono text-white text-lg font-bold w-32 border-b border-border text-right pb-1">₹ {volume.toLocaleString()}</span>
+                        <span className="font-mono text-white text-xl font-bold w-40 border-b border-primary/30 text-right pb-1 shadow-[0_4px_10px_-5px_rgba(59,130,246,0.3)]">₹ {volume.toLocaleString()}</span>
                     </div>
-                    <p className="text-[10px] text-textMuted italic">Simulate NSE/BSE combined daily equity turnover.</p>
                 </div>
 
                 <div className="w-full md:w-1/2 space-y-4">
-                    <label className="text-xs font-bold text-textMuted uppercase block">Intraday Capital Velocity (Cycles/Day)</label>
-                    <div className="flex items-center gap-4">
+                    <label className="text-xs font-bold text-textMuted uppercase block tracking-wider">Intraday Capital Velocity (Cycles/Day)</label>
+                    <div className="flex items-center gap-6">
                         <input
                             type="range"
                             min="1"
@@ -60,11 +59,10 @@ const MacroImpactDashboard = () => {
                             step="1"
                             value={cycle}
                             onChange={(e) => setCycle(Number(e.target.value))}
-                            className="w-full relative h-2 bg-background rounded-full outline-none appearance-none"
+                            className="w-full h-1.5 bg-background border border-border rounded-full outline-none appearance-none cursor-pointer accent-emerald-400"
                         />
-                        <span className="font-mono text-white text-lg font-bold w-16 border-b border-border text-center pb-1">{cycle}x</span>
+                        <span className="font-mono text-white text-xl font-bold w-20 border-b border-emerald-400/30 text-center pb-1 shadow-[0_4px_10px_-5px_rgba(16,185,129,0.3)]">{cycle}x</span>
                     </div>
-                    <p className="text-[10px] text-textMuted italic">How many times the same deployed capital can be re-traded instantly.</p>
                 </div>
 
             </div>

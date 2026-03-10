@@ -47,48 +47,49 @@ const VerifiedIdentityLayer = () => {
                     <h3 className="font-bold text-lg mb-4 text-white">Trader Onboarding</h3>
                     <p className="text-xs text-textMuted mb-6">Link government identity with financial rails to mint a zero-knowledge trading profile.</p>
 
-                    <div className="space-y-4">
+                    <div className="space-y-6">
                         <div>
-                            <label className="text-xs font-bold text-textMuted uppercase mb-1 block">PAN Number (Identity)</label>
-                            <div className="relative">
-                                <CreditCard className="absolute left-3 top-1/2 -translate-y-1/2 text-textMuted w-4 h-4" />
+                            <label className="text-[10px] font-bold text-textMuted uppercase mb-1.5 block tracking-widest pl-1">PAN Number (Identity)</label>
+                            <div className="relative group">
+                                <CreditCard className="absolute left-3 top-1/2 -translate-y-1/2 text-textMuted w-4 h-4 group-focus-within:text-primary transition-colors" />
                                 <input
                                     type="text"
                                     value={formData.pan}
                                     onChange={e => setFormData({ ...formData, pan: e.target.value.toUpperCase() })}
                                     placeholder="ABCDE1234F"
+                                    maxLength={10}
                                     disabled={status !== 'idle'}
-                                    className="w-full bg-background border border-border rounded-lg pl-10 pr-4 py-2 text-sm text-white focus:border-primary focus:outline-none disabled:opacity-50"
+                                    className="w-full bg-background/50 border border-border rounded-xl pl-10 pr-4 py-3 text-sm text-white focus:border-primary/50 focus:ring-4 focus:ring-primary/5 focus:outline-none disabled:opacity-50 transition-all font-mono tracking-wider"
                                 />
                             </div>
                         </div>
 
                         <div>
-                            <label className="text-xs font-bold text-textMuted uppercase mb-1 block">Bank Account (Funds)</label>
-                            <div className="relative">
-                                <Landmark className="absolute left-3 top-1/2 -translate-y-1/2 text-textMuted w-4 h-4" />
+                            <label className="text-[10px] font-bold text-textMuted uppercase mb-1.5 block tracking-widest pl-1">Bank Account (Funds)</label>
+                            <div className="relative group">
+                                <Landmark className="absolute left-3 top-1/2 -translate-y-1/2 text-textMuted w-4 h-4 group-focus-within:text-primary transition-colors" />
                                 <input
                                     type="text"
                                     value={formData.bank}
                                     onChange={e => setFormData({ ...formData, bank: e.target.value })}
                                     placeholder="000123456789 (HDFC/SBI)"
                                     disabled={status !== 'idle'}
-                                    className="w-full bg-background border border-border rounded-lg pl-10 pr-4 py-2 text-sm text-white focus:border-primary focus:outline-none disabled:opacity-50"
+                                    className="w-full bg-background/50 border border-border rounded-xl pl-10 pr-4 py-3 text-sm text-white focus:border-primary/50 focus:ring-4 focus:ring-primary/5 focus:outline-none disabled:opacity-50 transition-all font-mono tracking-wider"
                                 />
                             </div>
                         </div>
 
                         <div>
-                            <label className="text-xs font-bold text-textMuted uppercase mb-1 block">Demat Account (Securities)</label>
-                            <div className="relative">
-                                <Database className="absolute left-3 top-1/2 -translate-y-1/2 text-textMuted w-4 h-4" />
+                            <label className="text-[10px] font-bold text-textMuted uppercase mb-1.5 block tracking-widest pl-1">Demat Account (Securities)</label>
+                            <div className="relative group">
+                                <Database className="absolute left-3 top-1/2 -translate-y-1/2 text-textMuted w-4 h-4 group-focus-within:text-primary transition-colors" />
                                 <input
                                     type="text"
                                     value={formData.demat}
                                     onChange={e => setFormData({ ...formData, demat: e.target.value })}
                                     placeholder="IN3001234567890"
                                     disabled={status !== 'idle'}
-                                    className="w-full bg-background border border-border rounded-lg pl-10 pr-4 py-2 text-sm text-white focus:border-primary focus:outline-none disabled:opacity-50"
+                                    className="w-full bg-background/50 border border-border rounded-xl pl-10 pr-4 py-3 text-sm text-white focus:border-primary/50 focus:ring-4 focus:ring-primary/5 focus:outline-none disabled:opacity-50 transition-all font-mono tracking-wider"
                                 />
                             </div>
                         </div>
@@ -97,21 +98,21 @@ const VerifiedIdentityLayer = () => {
                             <button
                                 onClick={handleVerify}
                                 disabled={!formData.pan || !formData.bank || !formData.demat}
-                                className="w-full mt-4 bg-primary text-white py-2 rounded-lg text-sm font-bold glow hover:scale-[1.02] transition-transform disabled:opacity-50 disabled:hover:scale-100 disabled:glow-none"
+                                className="w-full mt-4 bg-primary text-white py-3 rounded-xl text-xs font-bold uppercase tracking-widest glow hover:scale-[1.02] active:scale-95 transition-all disabled:opacity-30 disabled:hover:scale-100 disabled:glow-none"
                             >
                                 Verify & Mint Identity Token
                             </button>
                         )}
 
                         {status === 'verifying' && (
-                            <div className="w-full mt-4 bg-panel border border-primary/50 text-primary py-2 rounded-lg text-sm font-bold flex justify-center items-center gap-2">
+                            <div className="w-full mt-4 bg-primary/10 border border-primary/30 text-primary py-3 rounded-xl text-xs font-bold uppercase tracking-widest flex justify-center items-center gap-3">
                                 <RotateCw className="animate-spin w-4 h-4" /> Validating via Interoperable APIs...
                             </div>
                         )}
 
                         {status === 'success' && (
-                            <div className="w-full mt-4 bg-success/20 border border-success text-success py-2 rounded-lg text-sm font-bold flex justify-center items-center gap-2 glow-success">
-                                <CheckCircle2 className="w-4 h-4" /> Identity Token Minted Successfully
+                            <div className="w-full mt-4 bg-success/20 border border-success text-success py-3 rounded-xl text-xs font-bold uppercase tracking-widest flex justify-center items-center gap-2 glow-success">
+                                <CheckCircle2 className="w-4 h-4" /> Identity Verified & Linked
                             </div>
                         )}
                     </div>
