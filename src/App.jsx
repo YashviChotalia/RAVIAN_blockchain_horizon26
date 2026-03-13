@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Activity, Shield, Coins, Share2, Layers, Clock, Settings, ArrowRight, X, AlertTriangle, Repeat, PieChart, Eye, Fingerprint, Link, RefreshCcw, Globe, BarChart3 } from 'lucide-react';
+import { Activity, Shield, Coins, Share2, Layers, Clock, Settings, ArrowRight, X, AlertTriangle, Repeat, PieChart, Eye, Fingerprint, Link, RefreshCcw, Globe, BarChart3, Wifi } from 'lucide-react';
 
 // Simulated sections
 import ProblemVisualization from './components/ProblemVisualization';
@@ -19,12 +19,14 @@ import SettlementGridlock from './components/SettlementGridlock';
 import InstitutionalRiskDashboard from './components/InstitutionalRiskDashboard';
 import ClearingEvolution from './components/ClearingEvolution';
 import MacroImpactDashboard from './components/MacroImpactDashboard';
+import TransactionFlow from './components/TransactionFlow';
 
 function App() {
   const [activeTab, setActiveTab] = useState('problem');
 
   const tabs = [
     { id: 'problem', label: 'T+1 Problem', icon: Clock },
+    { id: 'txflow', label: 'Live Transaction', icon: Wifi },
     { id: 'identity', label: 'Identity Layer', icon: Fingerprint },
     { id: 'gridlock', label: 'Gridlock Sim', icon: Link },
     { id: 'architecture', label: 'ShriNivesh Protocol', icon: Layers },
@@ -45,6 +47,7 @@ function App() {
   const renderContent = () => {
     switch (activeTab) {
       case 'problem': return <ProblemVisualization />;
+      case 'txflow': return <TransactionFlow />;
       case 'identity': return <VerifiedIdentityLayer />;
       case 'gridlock': return <SettlementGridlock />;
       case 'architecture': return <BlockchainArchitecture />;

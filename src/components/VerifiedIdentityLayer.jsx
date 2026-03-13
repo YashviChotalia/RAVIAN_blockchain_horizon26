@@ -35,6 +35,11 @@ const VerifiedIdentityLayer = () => {
                     <Fingerprint /> Verified Trading Identity (VTI) Layer
                 </h2>
                 <p className="text-textMuted mt-1">Unifying KYC, Asset Ownership, and Payment Rails for Instant Atomic Validation.</p>
+                {/* UCC badge */}
+                <div className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-500/10 border border-indigo-500/30 rounded-full">
+                    <CheckCircle2 size={13} className="text-indigo-400" />
+                    <span className="text-[11px] font-bold text-indigo-300 uppercase tracking-widest">UCC (Unique Client Code) verified via PAN · Bank Account · Demat Account</span>
+                </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -44,12 +49,17 @@ const VerifiedIdentityLayer = () => {
                         <ShieldCheck size={120} />
                     </div>
 
-                    <h3 className="font-bold text-lg mb-4 text-white">Trader Onboarding</h3>
-                    <p className="text-xs text-textMuted mb-6">Link government identity with financial rails to mint a zero-knowledge trading profile.</p>
+                    <h3 className="font-bold text-lg mb-4 text-white">Trader Onboarding — UCC Registration</h3>
+                    <p className="text-xs text-textMuted mb-4">Link government identity with financial rails to mint a zero-knowledge UCC-backed trading profile. SEBI requires every investor to have a <strong className="text-indigo-400">Unique Client Code (UCC)</strong> derived from PAN + Bank + Demat linkage.</p>
+                    <div className="mb-4 flex gap-2 flex-wrap">
+                        {['PAN → ITD/CBDT', 'Bank → NPCI', 'Demat → CDSL/NSDL'].map(tag => (
+                            <span key={tag} className="text-[9px] font-bold uppercase tracking-wider px-2 py-1 rounded bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">{tag}</span>
+                        ))}
+                    </div>
 
                     <div className="space-y-6">
                         <div>
-                            <label className="text-[10px] font-bold text-textMuted uppercase mb-1.5 block tracking-widest pl-1">PAN Number (Identity)</label>
+                            <label className="text-[10px] font-bold text-textMuted uppercase mb-1.5 block tracking-widest pl-1">PAN Number — Identity (UCC Anchor)</label>
                             <div className="relative group">
                                 <CreditCard className="absolute left-3 top-1/2 -translate-y-1/2 text-textMuted w-4 h-4 group-focus-within:text-primary transition-colors" />
                                 <input
@@ -65,7 +75,7 @@ const VerifiedIdentityLayer = () => {
                         </div>
 
                         <div>
-                            <label className="text-[10px] font-bold text-textMuted uppercase mb-1.5 block tracking-widest pl-1">Bank Account (Funds)</label>
+                            <label className="text-[10px] font-bold text-textMuted uppercase mb-1.5 block tracking-widest pl-1">Bank Account — Funds Rail (UPI / RTGS)</label>
                             <div className="relative group">
                                 <Landmark className="absolute left-3 top-1/2 -translate-y-1/2 text-textMuted w-4 h-4 group-focus-within:text-primary transition-colors" />
                                 <input
@@ -80,7 +90,7 @@ const VerifiedIdentityLayer = () => {
                         </div>
 
                         <div>
-                            <label className="text-[10px] font-bold text-textMuted uppercase mb-1.5 block tracking-widest pl-1">Demat Account (Securities)</label>
+                            <label className="text-[10px] font-bold text-textMuted uppercase mb-1.5 block tracking-widest pl-1">Demat Account — Securities (NSDL / CDSL)</label>
                             <div className="relative group">
                                 <Database className="absolute left-3 top-1/2 -translate-y-1/2 text-textMuted w-4 h-4 group-focus-within:text-primary transition-colors" />
                                 <input
@@ -176,9 +186,14 @@ const VerifiedIdentityLayer = () => {
                         </div>
 
                         {/* Smart Contract Binding */}
-                        <div className={`mt-2 p-2 rounded-lg text-center transition-all ${status === 'success' ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/50 glow' : 'opacity-0'}`}>
-                            <span className="text-[10px] font-mono font-bold tracking-widest uppercase block mb-1">Unified VTI Token</span>
+                        <div className={`mt-2 p-3 rounded-lg text-center transition-all ${status === 'success' ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/50 glow' : 'opacity-0'}`}>
+                            <span className="text-[10px] font-mono font-bold tracking-widest uppercase block mb-1">Unified VTI Token + UCC Verified</span>
                             <span className="font-mono text-xs">{hashes.vti}</span>
+                            <div className="mt-2 flex justify-center gap-3 flex-wrap">
+                                {['UCC Verified', 'PAN ✓', 'Bank ✓', 'Demat ✓'].map(t => (
+                                    <span key={t} className="text-[9px] px-2 py-0.5 bg-success/10 border border-success/30 rounded text-success font-bold">{t}</span>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -203,13 +218,13 @@ const VerifiedIdentityLayer = () => {
                             </div>
                         </div>
 
-                        {/* VTI Layer */}
+                        {/* VTI + UCC Layer */}
                         <div className="flex items-center gap-2">
                             <span className="w-16 text-xs text-success font-bold text-right glow-success">Real-Time</span>
                             <div className="flex-1 bg-background rounded-full h-8 flex overflow-hidden border border-border relative">
                                 <div className="absolute inset-0 bg-gradient-to-r from-success/20 to-primary/20 blur-md" />
                                 <div className="w-full relative z-10 flex items-center justify-center gap-2 text-xs font-bold text-white shadow-[inset_0_0_10px_rgba(16,185,129,0.3)]">
-                                    <Fingerprint size={12} className="text-success" /> Auto-Verified by Smart Contract VTI
+                                    <Fingerprint size={12} className="text-success" /> UCC + VTI Auto-Verified by Smart Contract
                                 </div>
                             </div>
                         </div>
