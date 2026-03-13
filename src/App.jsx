@@ -27,7 +27,7 @@ function App() {
     { id: 'problem', label: 'T+1 Problem', icon: Clock },
     { id: 'identity', label: 'Identity Layer', icon: Fingerprint },
     { id: 'gridlock', label: 'Gridlock Sim', icon: Link },
-    { id: 'architecture', label: 'Blockchain DVP', icon: Layers },
+    { id: 'architecture', label: 'ShriNivesh Protocol', icon: Layers },
     { id: 'clearing', label: 'Clearing Shift', icon: RefreshCcw },
     { id: 'simulator', label: 'Atomic Swap', icon: Activity },
     { id: 'network', label: 'Network', icon: Share2 },
@@ -70,12 +70,12 @@ function App() {
       <header className="border-b border-border bg-panel/50 backdrop-blur-md sticky top-0 z-50">
         <div className="w-full px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-primary/20 border border-primary/50 flex items-center justify-center glow text-primary">
-              <Shield size={24} />
+            <div className="w-12 h-12 rounded-xl overflow-hidden border border-primary/30 flex items-center justify-center glow transition-all hover:scale-105">
+              <img src="/shrinivesh-logo.png" alt="ShriNivesh Logo" className="w-full h-full object-cover" />
             </div>
             <div>
-              <h1 className="text-xl font-bold tracking-tight text-white">Project DVP</h1>
-              <p className="text-xs text-textMuted hidden sm:block">Real-Time Blockchain Settlement Layer for Indian Markets</p>
+              <h1 className="text-xl font-bold tracking-tight text-white">ShriNivesh</h1>
+              <p className="text-xs text-textMuted hidden sm:block">Advancing Real-Time Settlement for Modern Markets</p>
             </div>
           </div>
           <div className="flex gap-2 items-center">
@@ -112,19 +112,6 @@ function App() {
             })}
           </div>
 
-          <div className="mt-8 p-4 bg-primary/5 rounded-2xl border border-primary/10 backdrop-blur-sm">
-            <h3 className="text-[10px] font-bold text-primary/70 uppercase mb-3 tracking-[0.2em] flex items-center gap-2">
-              <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              Tech Stack
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {['Hyperledger', 'Solidity', 'Polygon', 'React'].map(tech => (
-                <span key={tech} className="px-2 py-1 text-[10px] font-mono bg-background border border-border/50 rounded-md text-textMuted/80">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
           <div className="h-10 shrink-0" />
         </nav>
 

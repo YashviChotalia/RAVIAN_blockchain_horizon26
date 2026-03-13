@@ -208,7 +208,7 @@ const AtomicSimulator = () => {
                     )}
                     {(tradeStatus === 'swapping' || tradeStatus === 'complete') && (
                         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-yellow-400">
-                            [{new Date().toLocaleTimeString()}] [DVP_LOCK] Buyer funds locked... Seller shares locked...
+                            [{new Date().toLocaleTimeString()}] [SHRINIVESH_LOCK] Buyer funds locked... Seller shares locked...
                         </motion.p>
                     )}
                     {(tradeStatus === 'swapping' || tradeStatus === 'complete') && (

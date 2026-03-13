@@ -89,7 +89,7 @@ const ClearingEvolution = () => {
                                     <div className="absolute p-6 border-2 border-success bg-success/20 rounded-full flex flex-col items-center justify-center z-20 shadow-[0_0_50px_rgba(16,185,129,0.4)]">
                                         <Lock size={48} className="text-white mb-2 pb-2 border-b border-success/50" />
                                         <Zap size={32} className="text-yellow-400 absolute bottom-4 animate-pulse" />
-                                        <h3 className="font-bold text-white uppercase text-[10px] tracking-widest mt-2">DVP Smart<br />Contract</h3>
+                                        <h3 className="font-bold text-white uppercase text-[10px] tracking-widest mt-2">ShriNivesh Smart<br />Contract</h3>
                                     </div>
 
                                     {/* Unified Infrastructure Nodes on the ring */}

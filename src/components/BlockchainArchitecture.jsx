@@ -37,8 +37,8 @@ const BlockchainArchitecture = () => {
         { id: 'vti', title: 'Verified Trading Identity Layer (VTI)', icon: Fingerprint, desc: 'Zero-knowledge validator linking PAN, Bank, and Demat accounts securely.' },
         { id: 'brokers', title: 'Broker APIs', icon: Activity, desc: 'Brokers route orders to the blockchain layer and exchange simultaneously.' },
         { id: 'exchange', title: 'Exchange Engine', icon: Server, desc: 'NSE/BSE matching engine handles order matching and broadcasts trades.' },
-        { id: 'blockchain', title: 'Blockchain Settlement Layer', icon: Layers, desc: 'Permissioned ledger coordinating DVP smart contracts instantly.' },
-        { id: 'dvp', title: 'Smart Contract DVP', icon: Zap, desc: 'Atomic Swap: Executes only if both shares AND cash are present.' },
+        { id: 'blockchain', title: 'Blockchain Settlement Layer', icon: Layers, desc: 'Permissioned ledger coordinating ShriNivesh smart contracts instantly.' },
+        { id: 'dvp', title: 'Smart Contract: ShriNivesh', icon: Zap, desc: 'Atomic Swap: Executes only if both shares AND cash are present.' },
         { id: 'shares', title: 'Tokenized Shares', icon: Database, desc: 'CBDC or digital representations of equity securely held in vaults.' },
         { id: 'cash', title: 'Tokenized INR', icon: Coins, desc: 'Digital Rupee natively supporting programmable settlements.' },
         { id: 'depositories', title: 'Depositories', icon: Landmark, desc: 'NSDL/CDSL operating nodes to update beneficial ownership.' },
@@ -53,9 +53,9 @@ const BlockchainArchitecture = () => {
             <div>
                 <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-success to-emerald-400 flex items-center gap-3">
                     <Zap className="text-success" />
-                    Real-Time Blockchain Architecture
+                    Real-Time ShriNivesh Architecture
                 </h2>
-                <p className="text-textMuted mt-2">DVP (Delivery vs Payment) via smart contracts eliminates clearing delays.</p>
+                <p className="text-textMuted mt-2">ShriNivesh (Real-Time DVP) via smart contracts eliminates clearing delays.</p>
             </div>
 
             <div className="bg-panel/50 border border-border rounded-xl p-8 relative overflow-hidden flex flex-col items-center">

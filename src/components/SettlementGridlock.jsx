@@ -46,7 +46,7 @@ const SettlementGridlock = () => {
                         onClick={() => handleModeSwitch('rt')}
                         className={`flex items-center gap-2 px-6 py-2.5 rounded-lg transition-all ${mode === 'rt' ? 'bg-success/20 text-success border border-success/30 glow-success' : 'text-textMuted hover:text-white'}`}
                     >
-                        <InfinityIcon size={14} /> Atomic DVP
+                        <InfinityIcon size={14} /> ShriNivesh Protocol
                     </button>
                 </div>
             </div>
