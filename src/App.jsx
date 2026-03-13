@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Activity, Shield, Coins, Share2, Layers, Clock, Settings, ArrowRight, X, AlertTriangle, Repeat, PieChart, Eye, Fingerprint, Link, RefreshCcw, Globe, BarChart3, Wifi } from 'lucide-react';
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 // Simulated sections
 import ProblemVisualization from './components/ProblemVisualization';
@@ -145,6 +146,7 @@ function App() {
           </motion.div>
         </main>
       </div>
+      <SpeedInsights />
     </div>
   );
 }
