@@ -88,25 +88,10 @@ npm run dev
 # → http://localhost:5173
 ```
 
----
-
-## 🚢 Deploy to Vercel
-
-```bash
-# Option A: Auto-deploy via GitHub
-# 1. Go to https://vercel.com/new
-# 2. Import RAVIAN_blockchain_horizon26
-# 3. Set project name: shrinivesh
-# 4. Framework: Vite (auto-detected) — Root Directory: /
-# 5. Click Deploy
-
-# Option B: Vercel CLI
-npx vercel --prod
-```
-
-The included `vercel.json` handles all SPA routing automatically.
+deployed app link : https://shrinivesh.vercel.app/
 
 ---
+
 
 ## 💡 Vision
 
